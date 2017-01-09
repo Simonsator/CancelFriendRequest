@@ -4,6 +4,7 @@ import de.simonsator.partyandfriends.api.friends.abstractcommands.FriendSubComma
 import de.simonsator.partyandfriends.api.pafplayers.OnlinePAFPlayer;
 import de.simonsator.partyandfriends.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.api.pafplayers.PAFPlayerManager;
+import de.simonsator.partyandfriends.friends.commands.Friends;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.config.Configuration;
 
@@ -25,14 +26,14 @@ public class CancelCommand extends FriendSubCommand {
 			return;
 		PAFPlayer toCancel = PAFPlayerManager.getInstance().getPlayer(args[1]);
 		if (toCancel == null) {
-			sendError(pPlayer, new TextComponent(CONFIG.getString("Message.NeverSendAFriendRequest")));
+			sendError(pPlayer, new TextComponent(Friends.getInstance().getPrefix() + CONFIG.getString("Message.NeverSendAFriendRequest")));
 			return;
 		}
 		if (toCancel.hasRequestFrom(pPlayer)) {
 			toCancel.denyRequest(pPlayer);
-			pPlayer.sendMessage(CONFIG.getString("Message.Canceled"));
+			pPlayer.sendMessage(Friends.getInstance().getPrefix() + CONFIG.getString("Message.Canceled"));
 			return;
 		}
-		sendError(pPlayer, new TextComponent(CONFIG.getString("Message.NeverSendAFriendRequest")));
+		sendError(pPlayer, new TextComponent(Friends.getInstance().getPrefix() + CONFIG.getString("Message.NeverSendAFriendRequest")));
 	}
 }
