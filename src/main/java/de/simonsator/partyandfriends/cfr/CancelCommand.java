@@ -32,5 +32,6 @@ public class CancelCommand extends FriendSubCommand {
 			pPlayer.sendMessage(CONFIG.getString("Message.Canceled"));
 			return;
 		}
+		sendError(pPlayer, CONFIG.getString("Message.NeverSendAFriendRequest"));
 	}
 }
