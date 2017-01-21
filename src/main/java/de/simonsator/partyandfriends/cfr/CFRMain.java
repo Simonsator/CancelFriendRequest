@@ -16,7 +16,7 @@ public class CFRMain extends Plugin {
 	@Override
 	public void onEnable() {
 		try {
-			Configuration config = (new CFRConfig(new File(getDataFolder(), "config,yml"))).getCreatedConfiguration();
+			Configuration config = (new CFRConfig(new File(getDataFolder(), "config.yml"))).getCreatedConfiguration();
 			Friends.getInstance().addCommand(new CancelCommand(config.getStringList("Commands.CancelCommand.Name").toArray(new String[0]),
 					config.getInt("Commands.CancelCommand.Priority"), config.getString("Message.CommandUsage"), config));
 		} catch (IOException e) {
