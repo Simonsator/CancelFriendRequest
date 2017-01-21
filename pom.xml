@@ -6,7 +6,7 @@
 
 	<groupId>de.simonsator</groupId>
 	<artifactId>Cancel-Friend-Request</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<build>
 		<plugins>
 			<plugin>
