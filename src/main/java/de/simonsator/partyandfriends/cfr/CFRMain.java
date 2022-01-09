@@ -1,24 +1,25 @@
 package de.simonsator.partyandfriends.cfr;
 
+import de.simonsator.partyandfriends.api.PAFExtension;
 import de.simonsator.partyandfriends.friends.commands.Friends;
-import net.md_5.bungee.api.plugin.Plugin;
-import net.md_5.bungee.config.Configuration;
+import de.simonsator.partyandfriends.utilities.ConfigurationCreator;
 
 import java.io.File;
 import java.io.IOException;
 
 /**
  * @author simonbrungs
- * @version 1.0.0 09.01.17
+ * @version 1.0.0 10.01.2022
  */
-public class CFRMain extends Plugin {
+public class CFRMain extends PAFExtension {
 
 	@Override
 	public void onEnable() {
 		try {
-			Configuration config = (new CFRConfig(new File(getDataFolder(), "config.yml"))).getCreatedConfiguration();
-			Friends.getInstance().addCommand(new CancelCommand(config.getStringList("Commands.CancelCommand.Name").toArray(new String[0]),
+			ConfigurationCreator config = (new CFRConfig(new File(getConfigFolder(), "config.yml"), this));
+			Friends.getInstance().addCommand(new CancelCommand(config.getStringList("Commands.CancelCommand.Name"),
 					config.getInt("Commands.CancelCommand.Priority"), config.getString("Message.CommandUsage"), config));
+			registerAsExtension();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

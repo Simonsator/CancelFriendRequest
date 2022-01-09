@@ -1,5 +1,6 @@
 package de.simonsator.partyandfriends.cfr;
 
+import de.simonsator.partyandfriends.api.PAFExtension;
 import de.simonsator.partyandfriends.utilities.ConfigurationCreator;
 
 import java.io.File;
@@ -7,27 +8,23 @@ import java.io.IOException;
 
 /**
  * @author simonbrungs
- * @version 1.0.0 09.01.17
+ * @version 1.0.0 10.01.2022
  */
 public class CFRConfig extends ConfigurationCreator {
-	protected CFRConfig(File pFile) throws IOException {
-		super(pFile);
+	protected CFRConfig(File pFile, PAFExtension pPlugin) throws IOException {
+		super(pFile, pPlugin, true);
 		readFile();
 		loadDefaults();
 		saveFile();
-		process(configuration);
+		process();
 	}
 
 	private void loadDefaults() {
 		set("Commands.CancelCommand.Name", "cancel", "withdraw");
+		set("Commands.CancelCommand.Permission", "");
 		set("Commands.CancelCommand.Priority", 200);
 		set("Message.CommandUsage", "&8/&5friend cancel [name of the player] &8- &7Cancels a friend request");
 		set("Message.NeverSendAFriendRequest", " &7Either you never did send this player a friend request, or the player already accepted your friend request.");
 		set("Message.Canceled", " &7The friend request was canceled.");
-	}
-
-	@Override
-	public void reloadConfiguration() throws IOException {
-		configuration = (new CFRConfig(FILE)).getCreatedConfiguration();
 	}
 }

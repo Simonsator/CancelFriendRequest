@@ -6,7 +6,12 @@
 
 	<groupId>de.simonsator</groupId>
 	<artifactId>Cancel-Friend-Request</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
+	<properties>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
@@ -14,8 +19,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.2</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -33,28 +38,28 @@
 		</repository>
 		<repository>
 			<id>simonsators-repo</id>
-			<url>http://simonsator.de/repo</url>
+			<url>https://simonsator.de/repo</url>
 		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>net.md-5</groupId>
 			<artifactId>bungeecord-api</artifactId>
-			<version>LATEST</version>
+			<version>1.16-R0.4</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.md-5</groupId>
 			<artifactId>bungeecord-api</artifactId>
-			<version>LATEST</version>
+			<version>1.16-R0.4</version>
 			<type>javadoc</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.simonsator</groupId>
 			<artifactId>BungeecordPartyAndFriends</artifactId>
-			<version>1.0.51</version>
+			<version>1.0.85</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

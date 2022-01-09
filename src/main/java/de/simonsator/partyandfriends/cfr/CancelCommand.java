@@ -4,20 +4,23 @@ import de.simonsator.partyandfriends.api.friends.abstractcommands.FriendSubComma
 import de.simonsator.partyandfriends.api.pafplayers.OnlinePAFPlayer;
 import de.simonsator.partyandfriends.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.api.pafplayers.PAFPlayerManager;
-import de.simonsator.partyandfriends.friends.commands.Friends;
+import de.simonsator.partyandfriends.utilities.ConfigurationCreator;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.config.Configuration;
+
+import java.util.List;
 
 /**
- * @author simonbrungs
- * @version 1.0.0 09.01.17
+ * @author Simonsator
+ * @version 1.0.0 09.01.2022
  */
 public class CancelCommand extends FriendSubCommand {
-	private final Configuration CONFIG;
+	private final TextComponent NEVER_SEND_A_FRIEND_REQUEST_MESSAGE;
+	private final TextComponent CANCELED_MESSAGE;
 
-	protected CancelCommand(String[] pCommands, int pPriority, String pHelp, Configuration pConfig) {
-		super(pCommands, pPriority, pHelp);
-		CONFIG = pConfig;
+	protected CancelCommand(List<String> pCommands, int pPriority, String pHelp, ConfigurationCreator pConfig) {
+		super(pCommands, pPriority, pHelp, pConfig.getString("Commands.CancelCommand.Permission"));
+		NEVER_SEND_A_FRIEND_REQUEST_MESSAGE = new TextComponent(TextComponent.fromLegacyText(PREFIX + pConfig.getString("Message.NeverSendAFriendRequest")));
+		CANCELED_MESSAGE = new TextComponent(TextComponent.fromLegacyText(PREFIX + pConfig.getString("Message.Canceled")));
 	}
 
 	@Override
@@ -26,14 +29,14 @@ public class CancelCommand extends FriendSubCommand {
 			return;
 		PAFPlayer toCancel = PAFPlayerManager.getInstance().getPlayer(args[1]);
 		if (toCancel == null) {
-			sendError(pPlayer, new TextComponent(Friends.getInstance().getPrefix() + CONFIG.getString("Message.NeverSendAFriendRequest")));
+			sendError(pPlayer, NEVER_SEND_A_FRIEND_REQUEST_MESSAGE);
 			return;
 		}
 		if (toCancel.hasRequestFrom(pPlayer)) {
 			toCancel.denyRequest(pPlayer);
-			pPlayer.sendMessage(Friends.getInstance().getPrefix() + CONFIG.getString("Message.Canceled"));
+			pPlayer.sendMessage(CANCELED_MESSAGE);
 			return;
 		}
-		sendError(pPlayer, new TextComponent(Friends.getInstance().getPrefix() + CONFIG.getString("Message.NeverSendAFriendRequest")));
+		sendError(pPlayer, NEVER_SEND_A_FRIEND_REQUEST_MESSAGE);
 	}
 }
