@@ -2,6 +2,7 @@ name: CancelFriendRequest
 version: ${project.version}
 author: Simonsator
 depends: [ PartyAndFriends ]
+depend: [ PartyAndFriends ]
 main: de.simonsator.partyandfriends.cfr.CFRMain
 description: An add-on for party and friends to cancel friend requests
 api-version: 1.13
