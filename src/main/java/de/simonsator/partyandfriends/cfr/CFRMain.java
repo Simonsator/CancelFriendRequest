@@ -11,6 +11,7 @@ import java.io.IOException;
  * @author simonbrungs
  * @version 1.0.0 10.01.2022
  */
+@SuppressWarnings("unused")
 public class CFRMain extends PAFExtension {
 
 	@Override
