@@ -1,11 +1,12 @@
-package de.simonsator.partyandfriends.cfr;
+package de.simonsator.partyandfriends.velocity.cfr;
 
-import de.simonsator.partyandfriends.api.friends.abstractcommands.FriendSubCommand;
-import de.simonsator.partyandfriends.api.pafplayers.OnlinePAFPlayer;
-import de.simonsator.partyandfriends.api.pafplayers.PAFPlayer;
-import de.simonsator.partyandfriends.api.pafplayers.PAFPlayerManager;
-import de.simonsator.partyandfriends.utilities.ConfigurationCreator;
-import net.md_5.bungee.api.chat.TextComponent;
+import de.simonsator.partyandfriends.velocity.api.friends.abstractcommands.FriendSubCommand;
+import de.simonsator.partyandfriends.velocity.api.pafplayers.OnlinePAFPlayer;
+import de.simonsator.partyandfriends.velocity.api.pafplayers.PAFPlayer;
+import de.simonsator.partyandfriends.velocity.api.pafplayers.PAFPlayerManager;
+import de.simonsator.partyandfriends.velocity.utilities.ConfigurationCreator;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 
 import java.util.List;
 
@@ -19,8 +20,8 @@ public class CancelCommand extends FriendSubCommand {
 
 	protected CancelCommand(List<String> pCommands, int pPriority, String pHelp, ConfigurationCreator pConfig) {
 		super(pCommands, pPriority, pHelp, pConfig.getString("Commands.CancelCommand.Permission"));
-		NEVER_SEND_A_FRIEND_REQUEST_MESSAGE = new TextComponent(TextComponent.fromLegacyText(PREFIX + pConfig.getString("Message.NeverSendAFriendRequest")));
-		CANCELED_MESSAGE = new TextComponent(TextComponent.fromLegacyText(PREFIX + pConfig.getString("Message.Canceled")));
+		NEVER_SEND_A_FRIEND_REQUEST_MESSAGE = Component.text(PREFIX + pConfig.getString("Message.NeverSendAFriendRequest"));
+		CANCELED_MESSAGE = Component.text(PREFIX + pConfig.getString("Message.Canceled"));
 	}
 
 	@Override
@@ -39,4 +40,6 @@ public class CancelCommand extends FriendSubCommand {
 		}
 		sendError(pPlayer, NEVER_SEND_A_FRIEND_REQUEST_MESSAGE);
 	}
+
+
 }
