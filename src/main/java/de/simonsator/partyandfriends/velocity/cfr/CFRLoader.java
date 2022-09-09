@@ -11,7 +11,7 @@ import de.simonsator.partyandfriends.velocity.main.PAFPlugin;
 
 import java.nio.file.Path;
 
-@Plugin(id = "cancelfriendrequest", name = "CancelFriendRequest", version = "1.0.4-SNAPSHOT",
+@Plugin(id = "cancelfriendrequest", name = "CancelFriendRequest", version = "1.0.6-RELEASE",
 		url = "https://www.spigotmc.org/resources/cancel-friend-requests-for-party-and-friends.34567/",
 		description = "An add-on for party and friends to cancel friend requests"
 		, authors = {"JT122406", "Simonsator"}, dependencies = {@Dependency(id = "partyandfriends")})
@@ -29,6 +29,6 @@ public class CFRLoader {
 		PAFPlugin.loadExtension(new VelocityExtensionLoadingInfo(new CFRMain(folder),
 				"cancelfriendrequest",
 				"CancelFriendRequest",
-				"1.0.4-RELEASE", "JT122406, Simonsator"));
+				"1.0.6-RELEASE", "JT122406, Simonsator"));
 	}
 }
