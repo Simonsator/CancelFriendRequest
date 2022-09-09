@@ -15,20 +15,20 @@ import java.nio.file.Path;
 		url = "https://www.spigotmc.org/resources/cancel-friend-requests-for-party-and-friends.34567/",
 		description = "An add-on for party and friends to cancel friend requests"
 		, authors = {"JT122406", "Simonsator"}, dependencies = {@Dependency(id = "partyandfriends")})
-	public class CFRLoader {
+public class CFRLoader {
 
-		private final Path folder;
+	private final Path folder;
 
-		@Inject
-		public CFRLoader(@DataDirectory final Path pFolder) {
-			folder = pFolder;
-		}
-
-		@Subscribe
-		public void onProxyInitialization(ProxyInitializeEvent event) {
-			PAFPlugin.loadExtension(new VelocityExtensionLoadingInfo(new CFRMain(folder),
-					"cancelfriendrequest",
-					"CancelFriendRequest",
-					"1.0.4-RELEASE", "JT122406, Simonsator"));
-		}
+	@Inject
+	public CFRLoader(@DataDirectory final Path pFolder) {
+		folder = pFolder;
 	}
+
+	@Subscribe
+	public void onProxyInitialization(ProxyInitializeEvent event) {
+		PAFPlugin.loadExtension(new VelocityExtensionLoadingInfo(new CFRMain(folder),
+				"cancelfriendrequest",
+				"CancelFriendRequest",
+				"1.0.4-RELEASE", "JT122406, Simonsator"));
+	}
+}
