@@ -5,8 +5,8 @@ import de.simonsator.partyandfriends.velocity.api.pafplayers.OnlinePAFPlayer;
 import de.simonsator.partyandfriends.velocity.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.velocity.api.pafplayers.PAFPlayerManager;
 import de.simonsator.partyandfriends.velocity.utilities.ConfigurationCreator;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class CancelCommand extends FriendSubCommand {
 
 	protected CancelCommand(List<String> pCommands, int pPriority, String pHelp, ConfigurationCreator pConfig) {
 		super(pCommands, pPriority, pHelp, pConfig.getString("Commands.CancelCommand.Permission"));
-		NEVER_SEND_A_FRIEND_REQUEST_MESSAGE = Component.text(PREFIX + pConfig.getString("Message.NeverSendAFriendRequest"));
-		CANCELED_MESSAGE = Component.text(PREFIX + pConfig.getString("Message.Canceled"));
+		NEVER_SEND_A_FRIEND_REQUEST_MESSAGE = LegacyComponentSerializer.legacyAmpersand().deserialize(PREFIX + pConfig.getString("Message.NeverSendAFriendRequest"));
+		CANCELED_MESSAGE = LegacyComponentSerializer.legacyAmpersand().deserialize(PREFIX + pConfig.getString("Message.Canceled"));
 	}
 
 	@Override
