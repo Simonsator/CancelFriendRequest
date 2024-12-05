@@ -65,6 +65,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-CancelFriendRequest.iml
+*.iml
 /.idea/
-Cancel-Friend-Request.iml
