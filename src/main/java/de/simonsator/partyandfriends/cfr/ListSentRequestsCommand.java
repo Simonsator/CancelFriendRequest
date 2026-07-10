@@ -1,0 +1,44 @@
+package de.simonsator.partyandfriends.cfr;
+
+import de.simonsator.partyandfriends.api.friends.abstractcommands.FriendSubCommand;
+import de.simonsator.partyandfriends.api.pafplayers.OnlinePAFPlayer;
+import de.simonsator.partyandfriends.api.pafplayers.PAFPlayer;
+import de.simonsator.partyandfriends.utilities.ConfigurationCreator;
+import net.md_5.bungee.api.chat.TextComponent;
+
+import java.util.List;
+
+/**
+ * Lists the pending friend requests sent by the player.
+ *
+ * @author Simonsator
+ * @version 1.0.0 10.07.2026
+ */
+public class ListSentRequestsCommand extends FriendSubCommand {
+	private final TextComponent NO_SENT_REQUESTS_MESSAGE;
+	private final String SENT_REQUESTS_MESSAGE;
+	private final String REQUEST_SEPARATOR;
+
+	protected ListSentRequestsCommand(List<String> pCommands, int pPriority, String pHelp, ConfigurationCreator pConfig) {
+		super(pCommands, pPriority, pHelp, pConfig.getString("Commands.SentRequestsCommand.Permission"));
+		NO_SENT_REQUESTS_MESSAGE = new TextComponent(TextComponent.fromLegacyText(PREFIX + pConfig.getString("Message.NoSentFriendRequests")));
+		SENT_REQUESTS_MESSAGE = pConfig.getString("Message.SentFriendRequests");
+		REQUEST_SEPARATOR = pConfig.getString("Message.SentFriendRequestsSeparator");
+	}
+
+	@Override
+	public void onCommand(OnlinePAFPlayer pPlayer, String[] args) {
+		List<PAFPlayer> sentRequests = pPlayer.getOpenFriendRequestsSent();
+		if (sentRequests.isEmpty()) {
+			pPlayer.sendMessage(NO_SENT_REQUESTS_MESSAGE);
+			return;
+		}
+		StringBuilder message = new StringBuilder(PREFIX).append(SENT_REQUESTS_MESSAGE);
+		for (int i = 0; i < sentRequests.size(); i++) {
+			if (i != 0)
+				message.append(REQUEST_SEPARATOR);
+			message.append(sentRequests.get(i).getName());
+		}
+		pPlayer.sendMessage(new TextComponent(TextComponent.fromLegacyText(message.toString())));
+	}
+}

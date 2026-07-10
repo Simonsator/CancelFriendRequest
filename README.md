@@ -1,6 +1,7 @@
-# Prefixes for Party and Friends
+# Cancel Friend Request for Party and Friends
 
-An add-on for party and friends that adds the command /fried cancel to take back a friend request. For more information have a look at
+An add-on for Party and Friends that adds `/friend cancel` to take back a friend request and `/friend sent` to list pending friend
+requests sent by the user. For more information have a look at
 the [Spigotmc.org plugin description](https://www.spigotmc.org/resources/34567/).
 
 # Building
