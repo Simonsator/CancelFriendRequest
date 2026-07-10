@@ -24,6 +24,10 @@ public class CFRMain extends PAFExtension {
 			ConfigurationCreator config = (new CFRConfig(new File(getConfigFolder(), "config.yml"), this));
 			Friends.getInstance().addCommand(new CancelCommand(config.getStringList("Commands.CancelCommand.Name"),
 					config.getInt("Commands.CancelCommand.Priority"), config.getString("Message.CommandUsage"), config));
+			if (!config.getBoolean("Commands.SentRequestsCommand.Disabled")) {
+				Friends.getInstance().addCommand(new ListSentRequestsCommand(config.getStringList("Commands.SentRequestsCommand.Name"),
+						config.getInt("Commands.SentRequestsCommand.Priority"), config.getString("Message.SentRequestsCommandUsage"), config));
+			}
 			registerAsExtension();
 		} catch (IOException e) {
 			e.printStackTrace();
