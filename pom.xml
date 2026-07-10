@@ -91,7 +91,7 @@
 		<dependency>
 			<groupId>de.simonsator</groupId>
 			<artifactId>Cancel-Friend-Request-Velocity</artifactId>
-			<version>1.0.7-RELEASE</version>
+			<version>1.0.8-RELEASE</version>
 		</dependency>
 	</dependencies>
 </project>
