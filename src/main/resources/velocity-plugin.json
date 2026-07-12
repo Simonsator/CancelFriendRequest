@@ -1,0 +1,18 @@
+{
+  "id": "cancelfriendrequest",
+  "name": "CancelFriendRequest",
+  "version": "${project.version}",
+  "description": "An add-on for party and friends to cancel friend requests",
+  "url": "https://www.spigotmc.org/resources/cancel-friend-requests-for-party-and-friends.34567/",
+  "authors": [
+    "JT122406",
+    "Simonsator"
+  ],
+  "dependencies": [
+    {
+      "id": "partyandfriends",
+      "optional": false
+    }
+  ],
+  "main": "de.simonsator.partyandfriends.velocity.cfr.CFRLoader"
+}
